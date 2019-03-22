@@ -5,8 +5,5 @@ This project had been upload on other website before, this is the first time it 
 
 Happy to share my project with you guys and welcome to contact with me.
 
-![Image text](https://github.com/JohnayXiao/TextReader/blob/master/581.png）
-![Image text](https://github.com/JohnayXiao/TextReader/blob/master/582.png）
-![Image text](https://github.com/JohnayXiao/TextReader/blob/master/583.png）
-![Image text](https://github.com/JohnayXiao/TextReader/blob/master/584.png）
-![Image text](https://github.com/JohnayXiao/TextReader/blob/master/585.png）
+![Image](https://github.com/JohnayXiao/TextReader/blob/master/581.png）
+
