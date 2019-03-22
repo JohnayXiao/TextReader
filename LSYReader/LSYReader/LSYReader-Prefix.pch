@@ -1,0 +1,140 @@
+//
+//  LSYReader-Prefix.pch
+//  LSYReader
+//
+//  Created by Labanotation on 16/5/30.
+//  Copyright © 2016年 okwei. All rights reserved.
+//
+
+#ifndef LSYReader_Prefix_pch
+#define LSYReader_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* LSYReader_Prefix_pch */
+
+#ifdef __OBJC__
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CoreText/CoreText.h>
+#define RGB(R, G, B)    [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1.0]
+#define TopSpacing 40.0f
+#define BottomSpacing 40.0f
+#define LeftSpacing 20.0f
+#define RightSpacing  20.0f
+#define DELAYEXECUTE(delayTime,func) (dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{func;}))
+#define DistanceFromTopGuiden(view) (view.frame.origin.y + view.frame.size.height)
+#define DistanceFromLeftGuiden(view) (view.frame.origin.x + view.frame.size.width)
+#define ViewOrigin(view)   (view.frame.origin)
+#define ViewSize(view)  (view.frame.size)
+#define ScreenSize [UIScreen mainScreen].bounds.size
+#import "LSYReadUtilites.h"
+#import "LSYReadModel.h"
+#import "LSYReadParser.h"
+
+#define LSYNoteNotification @"LSYNoteNotification"
+#define LSYThemeNotification @"LSYThemeNotification"
+#define LSYEditingNotification @"LSYEditingNotification"
+#define LSYEndEditNotification @"LSYEndEditNotification"
+
+#define MinFontSize 11.0f
+#define MaxFontSize 20.0f
+#define kDocuments NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject
+
+//xjy
+#define VERSION             [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleShortVersionString"]
+#define BUILD               [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
+#define APPICON             [UIImage imageNamed:[[[[NSBundle mainBundle] infoDictionary] valueForKeyPath:@"CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"] lastObject]]
+
+
+#define AppID @"1414151076"
+#define DownloadUrl @"https://itunes.apple.com/cn/app/id1414151076?l=zh&ls=1&mt=8"
+
+
+// 字体适配test
+#define FitValue(value) ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? ((value)/414.0f*[UIScreen mainScreen].bounds.size.width) : ((value)/414.0f*[UIScreen mainScreen].bounds.size.width * 0.8))
+
+
+#define IS_SCREENH_568 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
+#define IS_SCREENH_667 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )667 ) < DBL_EPSILON )
+
+#define IS_SCREENH_736 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )736 ) < DBL_EPSILON )
+
+#define IS_SCREENH_812 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )812 ) < DBL_EPSILON )
+#define IS_IPAD ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+// MainScreen Height&Width
+#define XJ_ScreenBounds      [[UIScreen mainScreen] bounds]
+#define XJ_ScreenWidth   [UIScreen mainScreen].bounds.size.width
+#define XJ_ScreenHeight  [UIScreen mainScreen].bounds.size.height
+
+// iPhone X
+#define  XJ_iPhoneX (XJ_ScreenWidth == 375.f && XJ_ScreenHeight == 812.f ? YES : NO)
+
+#define XJ_StatusBarHeight (XJ_iPhoneX ? 44.f : 20.f)
+#define XJ_NavigationBarHeight  (XJ_iPhoneX ? 88.f : 64.f)
+#define XJ_TabbarHeight         (XJ_iPhoneX ? (49.f+34.f) : 49.f)
+#define XJ_safeBottomMargin   (XJ_iPhoneX ? 34.f : 0.f)
+
+#define XJ_ViewSafeAreInsets(view) ({UIEdgeInsets insets; if(@available(iOS 11.0, *)) {insets = view.safeAreaInsets;} else {insets = UIEdgeInsetsZero;} insets;})
+
+//字体
+#define regularFontWithSize(number) [UIFont fontWithName:@"PingFangSC-Regular" size:FitValue(number)]==nil?[UIFont systemFontOfSize:FitValue(number)]:[UIFont fontWithName:@"PingFang-SC-Regular" size:FitValue(number)]
+
+#define mediumFontWithSize(number) [UIFont fontWithName:@"PingFangSC-Medium" size:FitValue(number)]==nil?[UIFont systemFontOfSize:FitValue(number)]:[UIFont fontWithName:@"PingFang-SC-Medium" size:FitValue(number)]
+
+#define fangSongWithSize(number) [UIFont fontWithName:@"STFangsong" size:FitValue(number)]==nil?[UIFont systemFontOfSize:FitValue(number)]:[UIFont fontWithName:@"STFangsong" size:FitValue(number)]
+
+
+
+/// 第一个参数是当下的控制器适配iOS11 一下的，第二个参数表示scrollview或子类
+#define adjustsScrollViewInsetNever(controller,view) if(@available(iOS 11.0, *)) {view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;} else if([controller isKindOfClass:[UIViewController class]]) {controller.automaticallyAdjustsScrollViewInsets = false;}
+
+// 沙盒路径
+#define PATH_OF_APP_HOME    NSHomeDirectory()
+#define PATH_OF_TEMP        NSTemporaryDirectory()
+#define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+
+
+// 颜色(RGB)
+#define RGBCOLOR(r, g, b)       [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define RGBACOLOR(r, g, b, a)   [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+// 随机颜色
+#define RANDOM_UICOLOR     [UIColor colorWithRed:arc4random_uniform(256) / 255.0 green:arc4random_uniform(256) / 255.0 blue:arc4random_uniform(256) / 255.0 alpha:1]
+
+#define viewBackGroundColor [UIColor colorWithPatternImage:[UIImage imageNamed:@"screen2"]]
+
+//字体颜色
+//green
+//#define ThemeColor RGBCOLOR(152, 202, 83)
+#define ThemeColor RGBCOLOR(156, 212, 249)
+
+//#define NormalColor RGBCOLOR(152, 202, 83)
+#define NormalColor [UIColor whiteColor]
+#define HighlightColor [UIColor orangeColor]
+#define FaultColor [UIColor redColor]
+#define DisableColor RGBCOLOR(208, 240, 230)
+
+#define grayBgColor RGBCOLOR(244, 244, 244)
+#define grayTextColor RGBCOLOR(190, 190, 190)
+
+//ALERT
+#define ALERT(msg) [[[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show]
+
+// block self
+#define WeakSelf __weak typeof(self) weakSelf = self;
+#define StrongSelf __weak typeof(weakSelf) strongSelf = weakSelf;
+
+//禁用NSLog
+//#define NSLog(FORMAT, ...) nil
+
+// 判断系统版本
+#define kDevice_System [[[UIDevice currentDevice] systemVersion] floatValue]
+
+
+#endif
+
+
+
