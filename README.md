@@ -5,5 +5,8 @@ This project had been upload on other website before, this is the first time it 
 
 Happy to share my project with you guys and welcome to contact with me.
 
-![Image](https://github.com/JohnayXiao/TextReader/blob/master/581.png）
+![Image](TextReader/581.png)
 
+![Image](TextReader/582.png)
+
+![Image](TextReader/583.png)
